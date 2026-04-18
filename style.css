@@ -1,0 +1,376 @@
+:root {
+    --paper-light: #fdfbf7;
+    --paper-mid: #f4ecd8;
+    --paper-dark: #e8d8c3;
+    --ink-dark: #2c1e16;
+    --ink-light: #4a3b32;
+    --accent: #8b6e4e;
+    --tape: rgba(220, 205, 170, 0.6);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #1a1512 url('paper_texture.png') center/cover fixed;
+    background-blend-mode: overlay;
+    color: var(--ink-light);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* A soft warm vignette around the screen */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.dust-particles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+        radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px;
+    background-position: 0 0, 50px 50px;
+    animation: dustFloat 40s linear infinite;
+}
+
+@keyframes dustFloat {
+    0% { background-position: 0 0, 50px 50px; }
+    100% { background-position: 1000px 1000px, 1050px 1050px; }
+}
+
+.diary-wrapper {
+    max-width: 800px;
+    margin: 40px auto;
+    position: relative;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.page {
+    background: var(--paper-light);
+    background-image: linear-gradient(120deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%), url('paper_texture.png');
+    background-size: cover;
+    background-blend-mode: multiply;
+    border-radius: 4px 12px 12px 4px;
+    box-shadow: 
+        -10px 0 20px rgba(0,0,0,0.1) inset,
+        15px 15px 40px rgba(0,0,0,0.2),
+        0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 60px;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Page edge lines simulating stacked pages */
+.page::before {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    background: repeating-linear-gradient(to bottom, #fff, #fff 1px, #d4c4a8 1px, #d4c4a8 2px);
+    border-radius: 0 2px 2px 0;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cover Page */
+.cover-page {
+    text-align: center;
+    border-left: 15px solid #5a3c2a;
+    border-radius: 2px 12px 12px 2px;
+    padding: 80px 40px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--ink-dark);
+    margin: 20px 0 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 40px;
+    transform: rotate(-2deg);
+}
+
+.photo-frame {
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 2px 4px 15px rgba(0,0,0,0.15);
+    transform: rotate(2deg);
+    margin: 20px 0;
+    transition: transform 0.4s ease;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.photo-frame img {
+    width: 280px;
+    height: auto;
+    display: block;
+    filter: sepia(0.2) contrast(1.1);
+}
+
+.photo-corners::before, .photo-corners::after {
+    content: '';
+    position: absolute;
+    width: 30px; height: 30px;
+    border: 2px solid #222;
+    z-index: 2;
+}
+
+.photo-corners::before {
+    top: 5px; left: 5px;
+    border-right: none; border-bottom: none;
+}
+.photo-corners::after {
+    bottom: 5px; right: 5px;
+    border-left: none; border-top: none;
+}
+
+/* Letter Page */
+.letter-page {
+    font-size: 1.3rem;
+}
+
+.date {
+    text-align: right;
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-bottom: 30px;
+}
+
+.greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.body-text {
+    margin-bottom: 20px;
+    text-indent: 30px;
+    text-align: justify;
+}
+
+.sign-off {
+    margin-top: 40px;
+    font-family: 'Playfair Display', serif;
+}
+
+.signature {
+    font-family: 'Caveat', cursive;
+    font-size: 2.5rem;
+    color: var(--ink-dark);
+    margin-top: 10px;
+    transform: rotate(-5deg);
+}
+
+/* Memory Pages */
+.memory-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.memory-card {
+    position: relative;
+    background: #faf8f2;
+    padding: 20px 20px 40px 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 90%;
+    transform: rotate(-1deg);
+    transition: transform 0.4s ease;
+}
+
+.memory-card.layout-alt {
+    transform: rotate(1.5deg);
+}
+
+.memory-card:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.tape {
+    position: absolute;
+    background: var(--tape);
+    width: 100px;
+    height: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    backdrop-filter: blur(2px);
+    z-index: 5;
+}
+
+.top-tape {
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+}
+
+.side-tape {
+    top: 50%;
+    left: -15px;
+    transform: translateY(-50%) rotate(-88deg);
+}
+
+.memory-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(0.3) brightness(0.95) contrast(1.1);
+    border-radius: 2px;
+}
+
+.memory-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 20px 0 10px;
+    color: var(--ink-dark);
+    text-align: center;
+}
+
+.memory-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    text-align: center;
+    color: var(--ink-light);
+}
+
+/* Family Page */
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--ink-dark);
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.note-paper {
+    background: #fff9e6;
+    padding: 25px 20px;
+    position: relative;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    line-height: 1.4;
+}
+
+.note-1 { transform: rotate(-3deg); }
+.note-2 { transform: rotate(2deg); background: #f0f4e3; }
+.note-3 { transform: rotate(-1deg); background: #fdf0f0; }
+
+.pin {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #c92a2a);
+    border-radius: 50%;
+    box-shadow: -2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.pin::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 3px;
+    height: 3px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+}
+
+.note-author {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+/* Final Page */
+.final-page {
+    text-align: center;
+}
+
+.final-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+}
+
+.final-flower {
+    width: 250px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    filter: sepia(0.2) contrast(1.05);
+}
+
+.closing-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--ink-dark);
+}
+
+.closing-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .diary-wrapper { margin: 20px auto; }
+    .page { padding: 40px 20px; }
+    .title { font-size: 2.5rem; }
+    .subtitle { font-size: 1.8rem; }
+    .closing-message { font-size: 2.2rem; }
+}

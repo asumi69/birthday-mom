@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mom</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dust-particles"></div>
+    <div class="diary-wrapper">
+        <!-- Cover Section -->
+        <section class="page cover-page fade-in">
+            <div class="cover-content">
+                <div class="ornament top-ornament"></div>
+                <h1 class="title">Happy Birthday, Mom</h1>
+                <h2 class="subtitle">To the most beautiful soul</h2>
+                <div class="photo-frame">
+                    <img src="mom (1).png" alt="Mom">
+                    <div class="photo-corners"></div>
+                </div>
+                <div class="ornament bottom-ornament"></div>
+            </div>
+        </section>
+
+        <!-- Letter Section -->
+        <section class="page letter-page fade-in">
+            <div class="letter-content">
+                <p class="date">April 18th</p>
+                <p class="greeting">Dearest Mom,</p>
+                <p class="body-text">
+                    Words can barely hold the amount of love and gratitude I feel for you. 
+                    You have been my guiding light, my comfort, and my greatest inspiration. 
+                    Thank you for every sacrifice, every warm hug, and every quiet moment of understanding.
+                </p>
+                <p class="body-text">
+                    Today, I just want to celebrate you—the wonderful woman you are. 
+                    May this year bring you as much joy as you have given to everyone around you.
+                </p>
+                <p class="sign-off">With all my love,</p>
+                <p class="signature">[Your Name]</p>
+            </div>
+        </section>
+
+        <!-- Memory Pages -->
+        <section class="page memory-page fade-in">
+            <div class="memory-card">
+                <div class="tape top-tape"></div>
+                <img src="mom (2).png" alt="Memory 1" class="memory-img">
+                <h3 class="memory-title">A Walk to Remember</h3>
+                <p class="memory-caption">Those quiet afternoons walking together, hand in hand, are moments I will treasure forever.</p>
+            </div>
+        </section>
+        
+        <section class="page memory-page fade-in">
+            <div class="memory-card layout-alt">
+                <div class="tape side-tape"></div>
+                <video src="video (1).mp4" autoplay loop muted playsinline class="memory-img"></video>
+                <h3 class="memory-title">Golden Days</h3>
+                <p class="memory-caption">Our family picnics filled with laughter. You always made everything feel magical.</p>
+            </div>
+        </section>
+
+        <section class="page memory-page fade-in">
+            <div class="memory-card">
+                <div class="tape top-tape"></div>
+                <img src="mom (3).png" alt="Memory 3" class="memory-img">
+                <h3 class="memory-title">Beautiful Garden</h3>
+                <p class="memory-caption">You taught me how to find beauty in the little things. Your grace is like a blooming garden.</p>
+            </div>
+        </section>
+
+        <section class="page memory-page fade-in">
+            <div class="memory-card layout-alt">
+                <div class="tape side-tape"></div>
+                <video src="video (2).mp4" autoplay loop muted playsinline class="memory-img"></video>
+                <h3 class="memory-title">Joyful Moments</h3>
+                <p class="memory-caption">Your smile has always been the most beautiful thing in the world to me.</p>
+            </div>
+        </section>
+
+        <section class="page memory-page fade-in">
+            <div class="memory-card">
+                <div class="tape top-tape"></div>
+                <img src="mom (4).png" alt="Memory 4" class="memory-img">
+                <h3 class="memory-title">Precious Memories</h3>
+                <p class="memory-caption">Looking back at these times fills my heart with so much warmth.</p>
+            </div>
+        </section>
+
+        <!-- Family Message Section -->
+        <section class="page family-page fade-in">
+            <h2 class="section-title">Little Notes of Love</h2>
+            <div class="notes-grid">
+                <div class="note-paper note-1">
+                    <div class="pin"></div>
+                    <p>"You are the heart of our family. Happy Birthday!"</p>
+                    <span class="note-author">- Dad</span>
+                </div>
+                <div class="note-paper note-2">
+                    <div class="pin"></div>
+                    <p>"To the best grandma ever. We love your hugs and stories!"</p>
+                    <span class="note-author">- The Grandkids</span>
+                </div>
+                <div class="note-paper note-3">
+                    <div class="pin"></div>
+                    <p>"Thank you for always being there for us. We are so lucky to have you."</p>
+                    <span class="note-author">- [Sibling's Name]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Page -->
+        <section class="page final-page fade-in">
+            <div class="final-content">
+                <!-- A soft botanical closing image -->
+                <img src="mom (5).png" alt="Flowers" class="final-flower">
+                <h2 class="closing-message">We love you forever.</h2>
+                <p class="closing-sub">Thank you for being you.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Soft fade-in animation observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
