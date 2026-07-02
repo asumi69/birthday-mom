@@ -3,144 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Mom</title>
-    <!-- Google Fonts for Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <meta name="description" content="Boarding Flight HBD-2026! Celebrate the Captain of Birthday Fun with interactive close-ups, voice announcements, and real-time custom boarding pass generator.">
+    <title>Birthday Airways - Flight HBD-2026 Boarding Now!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="dust-particles"></div>
-    <div class="diary-wrapper">
-        <!-- Cover Section -->
-        <section class="page cover-page fade-in">
-            <div class="cover-content">
-                <div class="ornament top-ornament"></div>
-                <h1 class="title">Happy Birthday, Mom</h1>
-                <h2 class="subtitle">To the most beautiful soul</h2>
-                <div class="photo-frame">
-                    <img src="mom (1).png" alt="Mom">
-                    <div class="photo-corners"></div>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Danger red flashing overlay for turbulence -->
+    <div class="warning-overlay"></div>
+
+    <header>
+        <div class="logo">
+            <!-- SVG Plane Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L14 19v-5.5L21 16z"/>
+            </svg>
+            Birthday Airways
+        </div>
+        <h1>FLIGHT HBD-2026 BOARDING NOW</h1>
+        <p class="subtitle">Please fasten your seatbelts, adjust your tray tables to their full upright positions, and prepare for takeoff. We are celebrating the most legendary passenger in history!</p>
+    </header>
+
+    <main class="container">
+        <!-- LEFT COLUMN: Cabin Visualizer -->
+        <section class="visualizer-container">
+            <div class="glass-card pulse-glow" style="width: 100%; align-items: center;">
+                <h2 class="panel-title">
+                    <span class="emoji">✈️</span> Cabin Window seat 1A
+                </h2>
+                
+                <!-- The Airplane Window Outer Capsule Frame -->
+                <div class="cabin-window">
+                    <div class="photo-wrapper">
+                        <!-- Birthday Guy Image -->
+                        <img src="birthday_guy.png" alt="Birthday Guy" class="birthday-photo">
+                        
+                        <!-- Accessories Overlay -->
+                        <div class="accessories-overlay">
+                            <!-- 👨‍✈️ Pilot Cap SVG -->
+                            <svg viewBox="0 0 200 120" class="accessory" id="acc-pilot-hat">
+                                <path d="M10,60 Q10,10 100,10 Q190,10 190,60 C190,80 160,80 100,80 C40,80 10,80 10,60 Z" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+                                <path d="M25,75 Q100,100 175,75 C185,78 180,88 165,92 Q100,110 35,92 C20,88 15,78 25,75 Z" fill="#0f172a"/>
+                                <path d="M15,64 Q100,78 185,64 L187,70 Q100,84 13,70 Z" fill="#f3c623"/>
+                                <path d="M100,28 L90,38 L75,36 L85,46 L100,50 L115,46 L125,36 L110,38 Z" fill="#f59e0b"/>
+                                <circle cx="100" cy="40" r="8" fill="#d97706"/>
+                                <polygon points="100,34 97,42 103,42" fill="#f3c623"/>
+                            </svg>
+
+                            <!-- 🥳 Party Hat SVG -->
+                            <svg viewBox="0 0 120 180" class="accessory" id="acc-party-hat">
+                                <polygon points="60,10 10,150 110,150" fill="#00f2fe" stroke="#38bdf8" stroke-width="2"/>
+                                <path d="M35,80 L85,80 L102,128 L18,128 Z" fill="#f3c623" opacity="0.85"/>
+                                <path d="M48,45 L72,45 L85,80 L35,80 Z" fill="#ec4899" opacity="0.85"/>
+                                <circle cx="60" cy="12" r="14" fill="#f43f5e"/>
+                                <circle cx="60" cy="100" r="7" fill="#ffffff"/>
+                                <circle cx="40" cy="120" r="5" fill="#ffffff"/>
+                                <circle cx="80" cy="120" r="5" fill="#ffffff"/>
+                            </svg>
+
+                            <!-- 👑 Royal Crown SVG -->
+                            <svg viewBox="0 0 200 100" class="accessory" id="acc-crown">
+                                <path d="M10,80 L20,30 L60,60 L100,20 L140,60 L180,30 L190,80 Z" fill="#f3c623" stroke="#d97706" stroke-width="2"/>
+                                <rect x="10" y="80" width="180" height="12" rx="4" fill="#d97706"/>
+                                <circle cx="100" cy="20" r="6" fill="#ef4444"/>
+                                <circle cx="20" cy="30" r="5" fill="#3b82f6"/>
+                                <circle cx="180" cy="30" r="5" fill="#3b82f6"/>
+                                <circle cx="60" cy="60" r="4" fill="#10b981"/>
+                                <circle cx="140" cy="60" r="4" fill="#10b981"/>
+                                <circle cx="30" cy="86" r="3" fill="#ef4444"/>
+                                <circle cx="65" cy="86" r="3" fill="#3b82f6"/>
+                                <circle cx="100" cy="86" r="3" fill="#10b981"/>
+                                <circle cx="135" cy="86" r="3" fill="#3b82f6"/>
+                                <circle cx="170" cy="86" r="3" fill="#ef4444"/>
+                            </svg>
+
+                            <!-- 🕶️ Cyber Shaders SVG -->
+                            <svg viewBox="0 0 200 60" class="accessory" id="acc-sunglasses">
+                                <path d="M10,20 L75,20 L90,30 L110,30 L125,20 L190,20 L180,50 L120,50 L100,38 L80,50 L20,50 Z" fill="none" stroke="#00f2fe" stroke-width="4"/>
+                                <path d="M15,23 L73,23 L82,47 L23,47 Z" fill="rgba(0, 242, 254, 0.45)"/>
+                                <path d="M127,23 L185,23 L177,47 L118,47 Z" fill="rgba(0, 242, 254, 0.45)"/>
+                                <path d="M5,17 L195,17" stroke="#ec4899" stroke-width="2"/>
+                            </svg>
+
+                            <!-- 🥸 Mustache SVG -->
+                            <svg viewBox="0 0 120 40" class="accessory" id="acc-mustache">
+                                <path d="M60,10 C50,2 30,2 10,12 C-5,20 -1,32 15,26 C35,20 50,18 60,30 C70,18 85,20 105,26 C121,32 125,20 110,12 C90,2 70,2 60,10 Z" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+                            </svg>
+
+                            <!-- 🤿 Oxygen Mask SVG -->
+                            <svg viewBox="0 0 150 200" class="accessory" id="acc-oxygen-mask">
+                                <path d="M15,50 C40,40 110,40 135,50" fill="none" stroke="#64748b" stroke-dasharray="3,3" stroke-width="2"/>
+                                <path d="M40,55 C40,95 50,110 75,110 C100,110 110,95 110,55 C110,35 100,45 75,45 C50,45 40,35 40,55 Z" fill="#fbbf24" stroke="#d97706" stroke-width="3"/>
+                                <circle cx="75" cy="75" r="14" fill="#f59e0b" stroke="#d97706" stroke-width="1.5"/>
+                                <path d="M75,110 Q90,140 60,170 Q40,195 75,220" fill="none" stroke="#e11d48" stroke-width="5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                <div class="ornament bottom-ornament"></div>
-            </div>
-        </section>
 
-        <!-- Letter Section -->
-        <section class="page letter-page fade-in">
-            <div class="letter-content">
-                <p class="date">April 19th</p>
-                <p class="greeting">Dearest Mom,</p>
-                <p class="body-text">
-                   Ухаарлын насандаа явж байгаа ээждээ хайртай шүү. Дөч өтлөж яваа гэж гутрах хэрэггүй би тоглоомоор хэлдэг шүү. 
-                </p>
-                <p class="body-text">
-                    Хайрт ээждээ хорвоод мэндлээд 41 насны төрсөн өдрийн мэндийг хүргэж байна
-                </p>
-                <p class="sign-off">With all my love,</p>
-                <p class="signature">Tenuun</p>
-            </div>
-        </section>
-
-        <!-- Memory Pages -->
-        <section class="page memory-page fade-in">
-            <div class="memory-card">
-                <div class="tape top-tape"></div>
-                <img src="mom (2).png" alt="Memory 1" class="memory-img">
-                <h3 class="memory-title">A Walk to Remember</h3>
-                <p class="memory-caption">Аль дээр үед</p>
-            </div>
-        </section>
-        
-        <section class="page memory-page fade-in">
-            <div class="memory-card layout-alt">
-                <div class="tape side-tape"></div>
-                <video controls src="video1.mp4" width="400">
-                <h3 class="memory-title">Golden Days</h3>
-                <p class="memory-caption">Бээжингийн Universal парк дээр.</p>
-            </div>
-        </section>
-
-        <section class="page memory-page fade-in">
-            <div class="memory-card">
-                <div class="tape top-tape"></div>
-                <img src="mom (3).png" alt="Memory 3" class="memory-img">
-                <h3 class="memory-title">Street</h3>
-                <p class="memory-caption">Bali д гудамжний дэлгүүрээр хэсч явж байхдаа.</p>
-            </div>
-        </section>
-
-        <section class="page memory-page fade-in">
-            <div class="memory-card layout-alt">
-                <div class="tape side-tape"></div>
-                <video controls src="bddf5fa6-65f1-4ddb-bc2f-bb9f2e0e02f6.mp4" width="400">
-                <h3 class="memory-title">Joyful Moments</h3>
-                <p class="memory-caption">Beejingiin Universal park дээр</p>
-            </div>
-        </section>
-
-        <section class="page memory-page fade-in">
-            <div class="memory-card">
-                <div class="tape top-tape"></div>
-                <img src="mom (4).png" alt="Memory 4" class="memory-img">
-                <h3 class="memory-title">Precious Memories</h3>
-                <p class="memory-caption">Бали рүү онгоцонд явж байхдаа</p>
-            </div>
-        </section>
-
-        <!-- Family Message Section -->
-        <section class="page family-page fade-in">
-            <h2 class="section-title">Little Notes </h2>
-            <div class="notes-grid">
-                <div class="note-paper note-1">
-                    <div class="pin"></div>
-                    <p>"Ai бэйншдээ амарханшдээ гэж бодож байвал та өөрөө хийж үзээрэй"</p>
-                    <span class="note-author">Tenuun</span>
+                <div style="text-align: center; margin-top: 10px;">
+                    <small style="color: var(--text-muted);">💡 Click the airplane window to spray confetti!</small>
                 </div>
-                <div class="note-paper note-2">
-                    <div class="pin"></div>
-                    <p>"Энэ зураг бичлэгүүдийг би өөрөө авсан ба авсныхаа дараа үхтлээ инээсэн "p>
-                    <span class="note-author">Tenuun</span>
-                </div>
-                <div class="note-paper note-3">
-                    <div class="pin"></div>
-                    <p>"Ээждээ маш их хайртай шүү"</p>
-                    <span class="note-author">Tenuun</span>
+
+                <!-- Accessory Controls -->
+                <div style="width: 100%;">
+                    <h3 class="panel-title">👨‍✈️ Cabin Accessory Controls</h3>
+                    <div class="grid-buttons">
+                        <button class="btn-control" data-accessory="acc-pilot-hat">
+                            <span class="emoji">👨‍✈️</span>
+                            <span>Pilot Hat</span>
+                        </button>
+                        <button class="btn-control" data-accessory="acc-party-hat">
+                            <span class="emoji">🥳</span>
+                            <span>Party Hat</span>
+                        </button>
+                        <button class="btn-control" data-accessory="acc-crown">
+                            <span class="emoji">👑</span>
+                            <span>Royal Crown</span>
+                        </button>
+                        <button class="btn-control" data-accessory="acc-sunglasses">
+                            <span class="emoji">🕶️</span>
+                            <span>Cyber Shaders</span>
+                        </button>
+                        <button class="btn-control" data-accessory="acc-mustache">
+                            <span class="emoji">🥸</span>
+                            <span>Aero-Stache</span>
+                        </button>
+                        <button class="btn-control" data-accessory="acc-oxygen-mask">
+                            <span class="emoji">🤿</span>
+                            <span>Oxygen Mask</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Final Page -->
-        <section class="page final-page fade-in">
-            <div class="final-content">
-                <!-- A soft botanical closing image -->
-                <img src="mom (5).png" alt="Flowers" class="final-flower">
-                <h2 class="closing-message">Лав юү форэва.</h2>
-                <p class="closing-sub">Thank you for being you.</p>
-                <p class="closing-sub">2026.04.19</p>
+        <!-- RIGHT COLUMN: Interactive Dashboard -->
+        <section class="glass-card">
+            <!-- 1. Close-up Zoom-o-meter -->
+            <div class="slider-group">
+                <h3 class="panel-title">🔎 Close-Up Zoom-o-Meter</h3>
+                <div class="slider-container">
+                    <span class="emoji" style="font-size: 1.25rem;">🔍</span>
+                    <input type="range" min="1" max="5" value="1" class="zoom-slider" id="zoom-slider">
+                    <span class="zoom-value" id="zoom-value">100%</span>
+                </div>
+                <div class="zoom-caption" id="zoom-caption">Cruising Altitude: Perfect Normal Selfie</div>
+            </div>
+
+            <!-- 2. Soundboard Cabin Announcements -->
+            <div>
+                <h3 class="panel-title">📢 Captain's Cabin Announcements</h3>
+                <div class="audio-grid">
+                    <button class="announcement-btn" id="btn-takeoff">
+                        <div class="announcement-icon">✈️</div>
+                        <div class="announcement-text">
+                            <div class="announcement-title">Flight Takeoff Briefing</div>
+                            <div class="announcement-desc">Audio greeting from the flight deck</div>
+                        </div>
+                    </button>
+                    <button class="announcement-btn" id="btn-attendant">
+                        <div class="announcement-icon">🍰</div>
+                        <div class="announcement-text">
+                            <div class="announcement-title">Cabin Crew: Cake Alert</div>
+                            <div class="announcement-desc">Call for immediate candle lighting</div>
+                        </div>
+                    </button>
+                    <button class="announcement-btn" id="btn-vibes">
+                        <div class="announcement-icon">🎉</div>
+                        <div class="announcement-text">
+                            <div class="announcement-title">Vibes Entering Cabin</div>
+                            <div class="announcement-desc">Prepare for extreme party zone warnings</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3. Turbulence System -->
+            <div>
+                <h3 class="panel-title">🚨 Cabin Pressure Warning</h3>
+                <button class="btn-danger-action" id="btn-turbulence" style="width: 100%;">
+                    🚨 TRIGGER CABIN TURBULENCE
+                </button>
+            </div>
+
+            <!-- 4. Boarding Pass Builder -->
+            <div class="boarding-pass-builder">
+                <h3 class="panel-title">🎫 Boarding Pass Printer</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="input-name">Passenger Name</label>
+                        <input type="text" id="input-name" placeholder="E.g., Captain Legend" value="The Birthday Legend">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-age">Cruising Age</label>
+                        <input type="number" id="input-age" placeholder="Age" value="30">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input-msg">Special In-Flight Message</label>
+                    <input type="text" id="input-msg" placeholder="Happy Birthday Captain!" value="Wishing you a flight-tastic day!">
+                </div>
+
+                <!-- Boarding Pass Preview -->
+                <div class="boarding-pass-preview">
+                    <div class="boarding-pass pulse-gold">
+                        <!-- Perforation bottom notch -->
+                        <div class="boarding-pass-bottom-cut"></div>
+
+                        <div class="pass-header">
+                            <div class="pass-logo">
+                                <svg width="18" height="18" viewBox="0 0 24 24">
+                                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L14 19v-5.5L21 16z"/>
+                                </svg>
+                                BIRTHDAY AIRWAYS
+                            </div>
+                            <div class="pass-type">First Class</div>
+                        </div>
+
+                        <div class="pass-body">
+                            <!-- PASS MAIN CARD -->
+                            <div class="pass-main">
+                                <div class="pass-route">
+                                    <div class="route-airport">HBD</div>
+                                    <div class="route-arrow">
+                                        <svg width="16" height="16" viewBox="0 0 24 24">
+                                            <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L14 19v-5.5L21 16z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="route-airport">FUN</div>
+                                </div>
+
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">Passenger</span>
+                                        <span class="info-value" id="pass-name">The Birthday Legend</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">In-Flight Note</span>
+                                        <span class="info-value highlight" id="pass-msg" style="font-size: 0.8rem; line-height: 1.2;">Wishing you a flight-tastic day!</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Flight No.</span>
+                                        <span class="info-value" id="pass-flight">HBD-30</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Seat</span>
+                                        <span class="info-value" id="pass-seat">1A</span>
+                                    </div>
+                                </div>
+
+                                <div class="pass-barcode-container">
+                                    <div class="pass-barcode"></div>
+                                    <div class="barcode-text">HBD2026CELEBRATION</div>
+                                </div>
+                            </div>
+
+                            <!-- STUB TEAR CARDS -->
+                            <div class="pass-stub">
+                                <div>
+                                    <div class="stub-header">STUB</div>
+                                    <div class="stub-info-grid">
+                                        <div class="info-item">
+                                            <span class="info-label">Passenger</span>
+                                            <span class="info-value" id="pass-name-stub" style="font-size: 0.75rem;">THE BIRTHDAY...</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Flight</span>
+                                            <span class="info-value" id="pass-flight-stub" style="font-size: 0.75rem;">HBD-30</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Seat</span>
+                                            <span class="info-value" id="pass-seat-stub" style="font-size: 0.75rem;">1A</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-item" style="margin-top: 15px;">
+                                    <span class="info-label">Gate</span>
+                                    <span class="info-value" style="color: var(--gold); font-size: 0.85rem;">PARTY 1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-    </div>
+    </main>
 
-    <script>
-        // Soft fade-in animation observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
+    <footer>
+        <p>Made with <span class="heart">❤️</span> by Birthday Airways Ground Crew</p>
+        <p class="footer-credit">"This is your Captain speaking: Please make sure your cup is full of champagne."</p>
+    </footer>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
